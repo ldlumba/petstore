@@ -8,7 +8,7 @@ export default function PetImage({ alt, imageUrl, height = 220, sx = {} }) {
   const [src, setSrc] = useState(imageUrl || FALLBACK_IMAGE);
 
   return (
-    <Box sx={{ height, overflow: 'hidden', bgcolor: 'grey.100', ...sx }}>
+    <Box sx={{ height, overflow: 'hidden', bgcolor: 'grey.900', ...sx }}>
       <CardMedia
         component="img"
         image={src}

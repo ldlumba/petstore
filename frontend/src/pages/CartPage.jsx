@@ -1,6 +1,7 @@
 import { Box, Button, Card, CardContent, Container, Grid, Stack, Typography } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { useShopping } from '../components/AppProviders';
+import PetImage from '../components/PetImage';
 
 export default function CartPage() {
   const navigate = useNavigate();
@@ -13,7 +14,7 @@ export default function CartPage() {
       <Container sx={{ py: 4 }}>
         <Box sx={{ textAlign: 'center', py: 6 }}>
           <Typography variant="h5" sx={{ mb: 2 }}>Your cart is empty</Typography>
-          <Typography variant="body1" color="textSecondary" sx={{ mb: 4 }}>
+          <Typography variant="body1" color="text.secondary" sx={{ mb: 4 }}>
             Browse our catalog and add some pets to your cart!
           </Typography>
           <Button variant="contained" onClick={() => navigate('/')}>
@@ -33,21 +34,11 @@ export default function CartPage() {
           <Stack spacing={2}>
             {cartItems.map((item) => (
               <Card key={item.id} sx={{ display: 'flex' }}>
-                <Box
-                  component="img"
-                  src={item.imageUrl}
-                  alt={item.name}
-                  sx={{
-                    width: 120,
-                    height: 120,
-                    objectFit: 'cover',
-                    flexShrink: 0,
-                  }}
-                />
+                <PetImage imageUrl={item.imageUrl} alt={item.name} height={120} sx={{ width: 120, flexShrink: 0 }} />
                 <CardContent sx={{ flex: 1, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                   <Box>
                     <Typography variant="h6">{item.name}</Typography>
-                    <Typography variant="body2" color="textSecondary">
+                    <Typography variant="body2" color="text.secondary">
                       {item.category}
                     </Typography>
                     <Typography variant="body1" sx={{ mt: 1, fontWeight: 'bold' }}>

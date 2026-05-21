@@ -11,8 +11,8 @@ export function AppShell({ children }) {
   const { cartItems, wishlistItems } = useShopping();
 
   return (
-    <Box sx={{ minHeight: '100vh' }}>
-      <AppBar position="sticky" color="transparent" elevation={0} sx={{ backdropFilter: 'blur(14px)', borderBottom: '1px solid rgba(24, 33, 38, 0.08)' }}>
+    <Box sx={{ minHeight: '100vh', bgcolor: 'background.default' }}>
+      <AppBar position="sticky" elevation={0} sx={{ backdropFilter: 'blur(14px)', borderBottom: '1px solid', borderColor: 'divider' }}>
         <Toolbar sx={{ display: 'flex', justifyContent: 'space-between', gap: 2 }}>
           <Button component={RouterLink} to="/" color="inherit" sx={{ textTransform: 'none' }}>
             <Typography variant="h6" fontWeight={800}>Petstore</Typography>
@@ -25,7 +25,7 @@ export function AppShell({ children }) {
               sx={{
                 textTransform: 'none',
                 p: 1,
-                '&:hover': { bgcolor: 'rgba(0,0,0,0.08)' },
+                '&:hover': { bgcolor: 'action.hover' },
               }}
             >
               <Typography variant="body2">Cart ({cartItems.length})</Typography>
@@ -37,7 +37,7 @@ export function AppShell({ children }) {
               sx={{
                 textTransform: 'none',
                 p: 1,
-                '&:hover': { bgcolor: 'rgba(0,0,0,0.08)' },
+                '&:hover': { bgcolor: 'action.hover' },
               }}
             >
               <Typography variant="body2">Wishlist ({wishlistItems.length})</Typography>

@@ -40,7 +40,7 @@ services:
     plan: free
     envVars:
       - key: VITE_API_BASE_URL
-        value: https://petstore-backend.onrender.com
+        value: https://petstore-backend-4a0y.onrender.com
 
 databases:
   - name: petstore-db

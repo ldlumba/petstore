@@ -8,6 +8,7 @@ import { useEffect, useState } from 'react';
 import { Link as RouterLink, useParams } from 'react-router-dom';
 import EmptyState from '../components/EmptyState';
 import { useShopping } from '../components/AppProviders';
+import PetImage from '../components/PetImage';
 import { getPet } from '../services/petsApi';
 
 export default function PetDetailPage() {
@@ -41,7 +42,7 @@ export default function PetDetailPage() {
     <Stack spacing={3}>
       <Button component={RouterLink} to="/" variant="text">Back to catalog</Button>
       <Box sx={{ display: 'grid', gap: 3, gridTemplateColumns: { xs: '1fr', md: '1fr 1fr' }, alignItems: 'start' }}>
-        <Box component="img" src={pet.imageUrl || 'https://images.unsplash.com/photo-1517841905240-472988babdf9'} alt={pet.name} sx={{ width: '100%', borderRadius: 4 }} />
+        <PetImage imageUrl={pet.imageUrl} alt={pet.name} height={420} sx={{ borderRadius: 4 }} />
         <Stack spacing={2}>
           <Stack direction="row" spacing={1}>
             <Chip label={pet.category} color="primary" />

@@ -1,20 +1,20 @@
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
 import Chip from '@mui/material/Chip';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import { Link as RouterLink } from 'react-router-dom';
 import { useShopping } from './AppProviders';
+import PetImage from './PetImage';
 
 export default function PetCard({ pet }) {
   const { addToCart, addToWishlist } = useShopping();
 
   return (
     <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column', borderRadius: 4 }}>
-      <CardMedia component="img" height="220" image={pet.imageUrl || 'https://images.unsplash.com/photo-1517841905240-472988babdf9'} alt={pet.name} />
+      <PetImage imageUrl={pet.imageUrl} alt={pet.name} height={220} />
       <CardContent sx={{ flexGrow: 1 }}>
         <Stack direction="row" spacing={1} sx={{ mb: 1, flexWrap: 'wrap' }}>
           <Chip size="small" label={pet.category} color="primary" />

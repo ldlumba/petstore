@@ -7,10 +7,26 @@ services:
     plan: free
     healthCheckPath: /actuator/health
     envVars:
-      - key: DATABASE_URL
+      - key: DATABASE_HOST
         fromDatabase:
           name: petstore-db
-          property: connectionString
+          property: host
+      - key: DATABASE_PORT
+        fromDatabase:
+          name: petstore-db
+          property: port
+      - key: DATABASE_NAME
+        fromDatabase:
+          name: petstore-db
+          property: database
+      - key: DATABASE_USERNAME
+        fromDatabase:
+          name: petstore-db
+          property: user
+      - key: DATABASE_PASSWORD
+        fromDatabase:
+          name: petstore-db
+          property: password
       - key: CORS_ALLOWED_ORIGIN_PATTERNS
         value: https://*.onrender.com,http://localhost:5173,http://localhost:5174,http://localhost:5175
       - key: SPRING_PROFILES_ACTIVE

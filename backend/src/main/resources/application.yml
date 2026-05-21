@@ -2,9 +2,9 @@ spring:
   application:
     name: petstore-backend
   datasource:
-    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/petstore}
-    username: ${SPRING_DATASOURCE_USERNAME:petstore}
-    password: ${SPRING_DATASOURCE_PASSWORD:petstore}
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://${DATABASE_HOST:localhost}:${DATABASE_PORT:5432}/${DATABASE_NAME:petstore}}
+    username: ${SPRING_DATASOURCE_USERNAME:${DATABASE_USERNAME:petstore}}
+    password: ${SPRING_DATASOURCE_PASSWORD:${DATABASE_PASSWORD:petstore}}
   jpa:
     hibernate:
       ddl-auto: validate

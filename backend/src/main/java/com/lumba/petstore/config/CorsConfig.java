@@ -7,13 +7,13 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
 public class CorsConfig implements WebMvcConfigurer {
-  @Value("${app.cors.allowed-origins:http://localhost:5173,http://localhost:5174,http://localhost:5175}")
-  private String allowedOrigins;
+  @Value("${app.cors.allowed-origin-patterns:${CORS_ALLOWED_ORIGIN_PATTERNS:http://localhost:5173,http://localhost:5174,http://localhost:5175}}")
+  private String allowedOriginPatterns;
 
   @Override
   public void addCorsMappings(CorsRegistry registry) {
     registry.addMapping("/lumba/api/v1/**")
-        .allowedOrigins(allowedOrigins.split(","))
+        .allowedOriginPatterns(allowedOriginPatterns.split(","))
         .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
         .allowedHeaders("*")
         .allowCredentials(true)

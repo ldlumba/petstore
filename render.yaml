@@ -1,36 +1,34 @@
 services:
   - type: web
     name: petstore-backend
-    env: docker
+    runtime: docker
     rootDir: backend
+    branch: render-deploy
     plan: free
+    healthCheckPath: /actuator/health
     envVars:
       - key: DATABASE_URL
         fromDatabase:
           name: petstore-db
           property: connectionString
-      - key: CORS_ALLOWED_ORIGINS
-        fromService:
-          name: petstore-frontend
-          property: url
+      - key: CORS_ALLOWED_ORIGIN_PATTERNS
+        value: https://*.onrender.com,http://localhost:5173,http://localhost:5174,http://localhost:5175
       - key: SPRING_PROFILES_ACTIVE
         value: prod
-      - key: SERVER_PORT
-        value: $PORT
 
   - type: web
     name: petstore-frontend
-    env: docker
+    runtime: docker
     rootDir: frontend
+    branch: render-deploy
     plan: free
     envVars:
       - key: VITE_API_BASE_URL
-        fromService:
-          name: petstore-backend
-          property: url
+        value: https://petstore-backend.onrender.com
 
-  - type: pserv
-    name: petstore-db
+databases:
+  - name: petstore-db
+    databaseName: petstore
+    user: petstore
     plan: free
     ipAllowList: []
-
